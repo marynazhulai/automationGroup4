@@ -2,6 +2,7 @@ package com.customertimes.test.login;
 
 
 import com.customertimes.test.BaseTest;
+import com.customertimes.test.framework.driver.WebdriverRunner;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
@@ -31,7 +32,7 @@ public class MyFirstTest extends BaseTest {
     @Test
     public void checkSiteTitle (){
 
-        driver.get("https://www.amazon.com/");
+        WebdriverRunner.getWebDriver().get("https://www.amazon.com/");
         try {
             Thread.sleep(4_000);
         } catch (InterruptedException e) {
@@ -39,7 +40,7 @@ public class MyFirstTest extends BaseTest {
         }
 
         String  expectedTitle = "Amazon.com: Online Shopping for Electronics, Apparel, Computers, Books, DVDs & more";
-        String actualTitle = driver.getTitle();
+        String actualTitle = WebdriverRunner.getWebDriver().getTitle();
 
         SoftAssert softAssert = new SoftAssert();
 

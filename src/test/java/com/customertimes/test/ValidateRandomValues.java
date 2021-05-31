@@ -8,7 +8,7 @@ import java.util.Random;
 public class ValidateRandomValues {
     @Test
     public void test(){
-
+    //
     Random rand = new Random();
     int random = rand.nextInt(10);
     System.out.println("The result is " + random);

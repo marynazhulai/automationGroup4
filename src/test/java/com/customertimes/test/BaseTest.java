@@ -9,11 +9,11 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseTest {
-    protected WebDriver driver;
+ //   protected WebDriver driver;
 
     @BeforeSuite
-    public void setup() {
-        driver = WebdriverRunner.getWebDriver();
+    public void setup() throws InterruptedException {
+//      driver = WebdriverRunner.getWebDriver();
         System.out.println("This is before suite");
     }
 
