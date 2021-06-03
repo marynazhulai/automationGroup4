@@ -3,6 +3,8 @@ package com.customertimes.test.login;
 import com.customertimes.test.BaseTest;
 import com.customertimes.test.framework.driver.WebdriverRunner;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,11 +13,13 @@ import org.testng.annotations.Test;
 import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriver;
 
 public class NegativeTestLoginIncorrectEmail extends BaseTest {
+    WebDriverWait wait;
 
     @BeforeClass
     public void setup() throws InterruptedException {
         getWebDriver().get("http://beeb0b73705f.sn.mynetname.net:3000/");
-        Thread.sleep(1000);
+        wait = new WebDriverWait(getWebDriver(),5);
+        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
     }
 
@@ -39,7 +43,7 @@ public class NegativeTestLoginIncorrectEmail extends BaseTest {
         getWebDriver().findElement(By.cssSelector("[type=submit]")).click();
 
 
-        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Invalid email or password.')]")));
         String errorMessage = getWebDriver().findElement(By.xpath("//div[contains(text(), 'Invalid email or password.')]")).getText();
         Assert.assertEquals(errorMessage, "Invalid email or password.", "User is logged");
 
