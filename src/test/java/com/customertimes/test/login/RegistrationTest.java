@@ -1,7 +1,10 @@
 package com.customertimes.test.login;
 
+import com.customertimes.model.Customer;
 import com.customertimes.test.BaseTest;
 import com.customertimes.test.framework.driver.WebdriverRunner;
+import com.customertimes.test.framework.pages.LoginPage;
+import com.customertimes.test.framework.pages.RegistrationPage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,6 +21,8 @@ import static com.customertimes.test.framework.driver.WebdriverRunner.*;
 public class RegistrationTest extends BaseTest {
     static String userEmail = "mz" + System.currentTimeMillis() + "@ctdev.io";
     WebDriverWait wait;
+    Customer customer;
+    RegistrationPage registrationPage;
 
     @BeforeClass
     public void setup() throws InterruptedException {
@@ -25,6 +30,8 @@ public class RegistrationTest extends BaseTest {
         wait = new WebDriverWait(getWebDriver(),5);
         wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
+        customer = Customer.newBuilder().withEmailForRegistration().withPassword("1234567").withAnswer("Jyls").build();
+        registrationPage = new RegistrationPage(getWebDriver());
     }
 
     @AfterClass
@@ -35,40 +42,9 @@ public class RegistrationTest extends BaseTest {
     @Test
     public void userCanSignUpToJuiceShop () throws InterruptedException {
 
-        getWebDriver().findElement(By.id("navbarAccount")).click();
-        getWebDriver().findElement(By.id("navbarLoginButton")).click();
-        getWebDriver().findElement(By.xpath("//a[@routerlink='/register']")).click();
+        registrationPage.registerAs(customer);
 
-
-        getWebDriver().findElement(By.cssSelector("[aria-label=\"Email address field\"]")).clear();
-        getWebDriver().findElement(By.cssSelector("[aria-label=\"Email address field\"]")).sendKeys(userEmail);
-
-        getWebDriver().findElement(By.cssSelector("[aria-label=\"Field for the password\"]")).clear();
-        getWebDriver().findElement(By.cssSelector("[aria-label=\"Field for the password\"]")).sendKeys("123456");
-
-        getWebDriver().findElement(By.cssSelector("[aria-label=\"Field to confirm the password\"]")).clear();
-        getWebDriver().findElement(By.cssSelector("[aria-label=\"Field to confirm the password\"]")).sendKeys("123456");
-
-
-        getWebDriver().findElement(By.cssSelector("[role=combobox]")).click();
-        getWebDriver().findElement(By.xpath("//*[contains(text(), ' Your eldest siblings middle name? ')]")).click();
-
-
-        getWebDriver().findElement(By.xpath("//*[@aria-label='Field for the answer to the security question']")).clear();
-        getWebDriver().findElement(By.xpath("//*[@aria-label='Field for the answer to the security question']")).sendKeys("Jyls");
-
-        WebElement messageAboutLanguage = getWebDriver().findElement(By.xpath("//*[contains(text(), 'Language has been changed to English')]"));
-        wait.until(ExpectedConditions.invisibilityOf(messageAboutLanguage));
-
-        getWebDriver().findElement(By.cssSelector("button#registerButton")).click();
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(), 'Registration completed successfully. You can now log in.')]")));
-
-
-        String messageAboutSuccessRegistration = getWebDriver().findElement(By.xpath("//*[contains(text(), 'Registration completed successfully. You can now log in.')]")).getAttribute("innerText");
-        System.out.println(messageAboutSuccessRegistration);
-
-
+        String messageAboutSuccessRegistration = registrationPage.getMessageAboutSuccessRegistration();
         Assert.assertEquals(messageAboutSuccessRegistration, "Registration completed successfully. You can now log in.", "User is not registered");
 
     }

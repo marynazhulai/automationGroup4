@@ -1,7 +1,9 @@
 package com.customertimes.test.login;
 
+import com.customertimes.model.Customer;
 import com.customertimes.test.BaseTest;
 import com.customertimes.test.framework.driver.WebdriverRunner;
+import com.customertimes.test.framework.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,6 +19,8 @@ import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriv
 
 public class LoginTest extends BaseTest {
     WebDriverWait wait;
+    Customer customer;
+    LoginPage loginPage;
 
     @BeforeClass
     public void setup() throws InterruptedException {
@@ -24,6 +28,8 @@ public class LoginTest extends BaseTest {
         wait = new WebDriverWait(getWebDriver(),5);
         wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
+        customer = Customer.newBuilder().withName("m.z1@gmail.com").withPassword("1234567").build();
+        loginPage = new LoginPage(getWebDriver());
     }
 
     @AfterClass
@@ -34,23 +40,13 @@ public class LoginTest extends BaseTest {
     @Test
     public void userCanLogInToJuiceShop () throws InterruptedException {
 
-        getWebDriver().findElement(By.id("navbarAccount")).click();
-        getWebDriver().findElement(By.id("navbarLoginButton")).click();
+        loginPage.loginAs(customer);
+        loginPage.clickOnAccountButton();
 
-        getWebDriver().findElement(By.cssSelector("[name=email]")).clear();
-        getWebDriver().findElement(By.cssSelector("[name=email]")).sendKeys("m.z1@gmail.com");
-
-        getWebDriver().findElement(By.xpath("//*[@name='password']")).clear();
-        getWebDriver().findElement(By.xpath("//*[@name='password']")).sendKeys("1234567");
-
-        getWebDriver().findElement(By.cssSelector("[type=submit]")).click();
-
-        getWebDriver().findElement(By.id("navbarAccount")).click();
-
-
-        wait.until(ExpectedConditions.textToBe(By.cssSelector("button[aria-label='Go to user profile'] span"), "m.z1@gmail.com"));
-        String actualNameText = getWebDriver().findElement(By.cssSelector("button[aria-label='Go to user profile'] span")).getText();
-        Assert.assertEquals(actualNameText, "m.z1@gmail.com", "User is not logged");
+        String actualNameText = loginPage.getActualNameText(customer.getEmail());
+        Assert.assertEquals(actualNameText, customer.getEmail(), "User is not logged");
 
     }
+
+
 }
