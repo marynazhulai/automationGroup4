@@ -7,7 +7,17 @@ import org.aeonbits.owner.ConfigFactory;
 
 public interface TestConfig extends Config {
     TestConfig CONFIG = ConfigFactory.create(TestConfig.class);
+   // TestConfig CONFIG = ConfigFactory.create(TestConfig.class, System.getenv(), System.getProperties());
     @DefaultValue("chrome")
 
-    String browser();String admin();
+    String browser();
+
+//new line
+    //String browserVersion();
+//
+
+    boolean remote();
+
+    @Key("selenium.server.url")
+    String seleniumServerUrl();
 }
