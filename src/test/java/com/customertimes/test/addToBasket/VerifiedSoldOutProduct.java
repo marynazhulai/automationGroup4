@@ -26,7 +26,7 @@ public class VerifiedSoldOutProduct extends BaseTest {
 
     @BeforeClass
     public void setup() throws InterruptedException {
-        getWebDriver().get("http://beeb0b73705f.sn.mynetname.net:3000/");
+        getWebDriver().get("http://3.134.94.241");
         getWebDriver().manage().deleteAllCookies();
         //getWebDriver().navigate().refresh();
         wait = new WebDriverWait(getWebDriver(),5);

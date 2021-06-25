@@ -13,7 +13,7 @@ import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriv
 public class RegistrationFormEmailValidation extends BaseTest {
     @BeforeClass
     public void setup() throws InterruptedException {
-        getWebDriver().get("http://beeb0b73705f.sn.mynetname.net:3000/");
+        getWebDriver().get("http://3.134.94.241");
         Thread.sleep(1000);
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
     }
@@ -23,7 +23,7 @@ public class RegistrationFormEmailValidation extends BaseTest {
         WebdriverRunner.closeWebDriver();
     }
 
-    @Test
+  //  @Test
     public void registrationFormEmailValidation() throws InterruptedException {
 
         getWebDriver().findElement(By.id("navbarAccount")).click();

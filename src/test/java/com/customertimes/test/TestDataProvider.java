@@ -9,7 +9,7 @@ public class TestDataProvider {
         return new Object[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
     }
 
-    @Test(dataProvider = "data-provider")
+    //@Test(dataProvider = "data-provider")
     public void testMethod(int a, int b, int c) {
         int sum = a+b;
         System.out.println(sum + " and " + c);

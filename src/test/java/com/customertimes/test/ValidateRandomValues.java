@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.util.Random;
 
 public class ValidateRandomValues {
-    @Test
+   // @Test
     public void test(){
     //
     Random rand = new Random();

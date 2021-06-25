@@ -9,7 +9,6 @@ public interface TestConfig extends Config {
     TestConfig CONFIG = ConfigFactory.create(TestConfig.class);
    // TestConfig CONFIG = ConfigFactory.create(TestConfig.class, System.getenv(), System.getProperties());
     @DefaultValue("chrome")
-
     String browser();
 
 //new line

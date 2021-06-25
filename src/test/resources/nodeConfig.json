@@ -6,12 +6,13 @@
       "marionette": true,
       "maxInstances": 6,
       "seleniumProtocol": "WebDriver"
+
     },
     {
       "browserName": "chrome",
       "maxInstances": 3,
       "seleniumProtocol": "WebDriver",
-      "webdriver.chrome.driver":"C:\\chromedriver_win32\\chromedriver.exe"
+      "webdriver.chrome.driver":"C:\\Users\\maryna.zhulai\\chromedriver.exe"
     },
     {
       "browserName": "edge",

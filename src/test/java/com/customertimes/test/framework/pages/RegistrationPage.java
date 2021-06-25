@@ -6,6 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TransferQueue;
+
 import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriver;
 
 
@@ -17,7 +20,7 @@ public class RegistrationPage extends AbstractPage {
     private By emailField = (By.cssSelector("[aria-label=\"Email address field\"]"));
     private By passwordField = By.cssSelector("[aria-label=\"Field for the password\"]");
     private By confirmationPasswordField = By.cssSelector("[aria-label=\"Field to confirm the password\"]");
-    private By securityQuestionField = By.cssSelector("[role=combobox]");
+    private By securityQuestionField = By.cssSelector("[aria-label=\"Selection list for the security question\"]");
     private By middleNameQuestionOption = By.xpath("//*[contains(text(), ' Your eldest siblings middle name? ')]");
     private By answerField = By.xpath("//*[@aria-label='Field for the answer to the security question']");
     private By popupMessageAboutLanguage = By.xpath("//*[contains(text(), 'Language has been changed to English')]");
@@ -80,7 +83,7 @@ public class RegistrationPage extends AbstractPage {
         getWebDriver().findElement(notYetaCustomerLink).click();
     }
 
-    public void registerAs (Customer customer) {
+    public void registerAs (Customer customer) throws InterruptedException {
         navigateToRegistrationPage();
         enterEmail(customer.getEmailForRegistration());
         enterPassword(customer.getPassword());
