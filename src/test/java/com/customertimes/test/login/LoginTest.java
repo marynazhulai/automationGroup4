@@ -56,6 +56,6 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(actualNameText, customer.getEmail(), "User is not logged");
 
     }
-
+//
 
 }
