@@ -29,20 +29,20 @@ public class VerifiedSoldOutProduct extends BaseTest {
         getWebDriver().get("http://3.134.94.241");
         getWebDriver().manage().deleteAllCookies();
         //getWebDriver().navigate().refresh();
-        wait = new WebDriverWait(getWebDriver(),5);
-        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
+        wait = new WebDriverWait(getWebDriver(),20);
+        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("[aria-label='Close Welcome Banner']"))));
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
         wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("[aria-label='dismiss cookie message']"))));
         getWebDriver().findElement(By.cssSelector("[aria-label='dismiss cookie message']")).click();
         customer = Customer.newBuilder().withName("m.z1@gmail.com").withPassword("1234567").build();
-        product = product = Product.newBuilder().withErrorMessage("We are out of stock! Sorry for the inconvenience.").build();
+        product = Product.newBuilder().withErrorMessage("We are out of stock! Sorry for the inconvenience.").build();
         productPage = new ProductPage(getWebDriver());
     }
 
     @AfterClass
     public void tearDown() {
         getWebDriver().manage().deleteAllCookies();
-        getWebDriver().navigate().refresh();
+        //getWebDriver().navigate().refresh();
         WebdriverRunner.closeWebDriver();
     }
     @Test

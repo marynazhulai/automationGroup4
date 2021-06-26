@@ -41,7 +41,7 @@ public class VerifiedAddedProductToBasket extends BaseTest {
     @AfterClass
     public void tearDown() {
         getWebDriver().manage().deleteAllCookies();
-        getWebDriver().navigate().refresh();
+        //getWebDriver().navigate().refresh();
         WebdriverRunner.closeWebDriver();
     }
     @Test

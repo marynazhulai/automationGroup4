@@ -45,8 +45,10 @@ public class RegistrationPage extends AbstractPage {
     }
 
     public void clickOnRegisterButton() {
-        WebElement messageAboutLanguage = getWebDriver().findElement(popupMessageAboutLanguage);
-        wait.until(ExpectedConditions.invisibilityOf(messageAboutLanguage));
+        //WebElement messageAboutLanguage = getWebDriver().findElement(popupMessageAboutLanguage);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(popupMessageAboutLanguage));
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(registerButton));
+
         getWebDriver().findElement(registerButton).click();
     }
 

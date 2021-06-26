@@ -25,12 +25,13 @@ public class VerifiedProductInformation extends BaseTest {
 
     @BeforeClass
     public void setup() throws InterruptedException {
-        getWebDriver().get("hhttp://3.134.94.241");
-        getWebDriver().manage().deleteAllCookies();
+        getWebDriver().get("http://3.134.94.241");
+        //getWebDriver().manage().deleteAllCookies();
         //getWebDriver().navigate().refresh();
-        wait = new WebDriverWait(getWebDriver(),5);
-        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
-        getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
+        wait = new WebDriverWait(getWebDriver(),15);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[aria-label='Close Welcome Banner']")));
+        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("[aria-label='Close Welcome Banner']"))));
+        getWebDriver().findElement(By.cssSelector("[aria-label='Close Welcome Banner']")).click();
         customer = Customer.newBuilder().withName("m.z1@gmail.com").withPassword("1234567").build();
         product = Product.newBuilder().withTitle("Apple Juice (1000ml)").withDescription("The all-time classic.").withPrice("1.99¤").build();
         productInformationPage = new ProductInformationPage(getWebDriver());
@@ -39,7 +40,7 @@ public class VerifiedProductInformation extends BaseTest {
     @AfterClass
     public void tearDown() {
         getWebDriver().manage().deleteAllCookies();
-        getWebDriver().navigate().refresh();
+       // getWebDriver().navigate().refresh();
         WebdriverRunner.closeWebDriver();
     }
 

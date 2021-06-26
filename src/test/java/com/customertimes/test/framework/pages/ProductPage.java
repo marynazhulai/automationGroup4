@@ -11,7 +11,7 @@ import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriv
 public class ProductPage extends AbstractPage {
     private WebDriverWait wait;
     private By nextPageButton = By.cssSelector("[aria-label='Next page']");
-    private By soldOutProduct = By.xpath("//*[@class='mat-grid-list']/div/mat-grid-tile[2]/figure/mat-card/div[3]/button");
+    private By soldOutProduct = By.xpath("//*[@class='mat-grid-list']/div/mat-grid-tile[3]/figure/mat-card/div[3]/button");
     private By warningMessageOutOfStock = By.xpath("//*[contains(text(), 'We are out of stock! Sorry for the inconvenience.')]");
 
 
@@ -31,6 +31,7 @@ public class ProductPage extends AbstractPage {
     }
 
     public void clickOnSoldOutProduct() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(soldOutProduct));
         getWebDriver().findElement(soldOutProduct).click();
     }
 

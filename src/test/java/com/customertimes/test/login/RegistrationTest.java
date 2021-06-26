@@ -27,9 +27,10 @@ public class RegistrationTest extends BaseTest {
     @BeforeClass
     public void setup() throws InterruptedException {
         getWebDriver().get("http://3.134.94.241");
-        wait = new WebDriverWait(getWebDriver(),5);
-        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
-        getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
+        wait = new WebDriverWait(getWebDriver(),10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[aria-label='Close Welcome Banner']")));
+        wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("[aria-label='Close Welcome Banner']"))));
+        getWebDriver().findElement(By.cssSelector("[aria-label='Close Welcome Banner']")).click();
         customer = Customer.newBuilder().withEmailForRegistration().withPassword("1234567").withAnswer("Jyls").build();
         registrationPage = new RegistrationPage(getWebDriver());
     }
@@ -39,7 +40,7 @@ public class RegistrationTest extends BaseTest {
         WebdriverRunner.closeWebDriver();
     }
 
-   // @Test
+    @Test
     public void userCanSignUpToJuiceShop () throws InterruptedException {
 
         registrationPage.registerAs(customer);
