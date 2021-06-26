@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
         wait = new WebDriverWait(getWebDriver(),5);
         wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
-        customer = Customer.newBuilder().withName("m.z1@gmail.comm").withPassword("1234567").build();
+        customer = Customer.newBuilder().withName("m.z1@gmail.com").withPassword("1234567").build();
         loginPage = new LoginPage(getWebDriver());
     }
 
