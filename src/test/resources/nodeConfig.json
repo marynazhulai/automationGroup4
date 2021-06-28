@@ -12,7 +12,7 @@
       "browserName": "chrome",
       "maxInstances": 3,
       "seleniumProtocol": "WebDriver",
-      "webdriver.chrome.driver":"C:\\correctchromedriver\\chromedriver.exe"
+      "webdriver.chrome.driver":"C:\\Users\\maryna.zhulai\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe"
     },
     {
       "browserName": "edge",

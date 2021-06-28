@@ -45,6 +45,7 @@ public class WebdriverRunner {
                         }
                     } else {
                         WebDriverManager.chromedriver().setup();
+
                         driver.set(new ChromeDriver());
                     }
                 }
