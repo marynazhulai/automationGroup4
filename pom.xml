@@ -74,7 +74,7 @@
             </environmentVariables>
             <!-- Suite file injection parameter from command line -->
             <suiteXmlFiles>
-              <suiteXmlFile>${project.basedir}/src/test/resources/testng.xml</suiteXmlFile>
+              <suiteXmlFile>${project.basedir}/src/test/resources/testing.xml</suiteXmlFile>
             </suiteXmlFiles>
           </configuration>
         </plugin>
