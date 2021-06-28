@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Regression Suite" verbose="1" configfailurepolicy="continue" parallel="classes" thread-count="5" >
+    <!--<listeners>
+        <listener class-name="com.customertimes.test.framework.listener.TestListener"></listener>
+    </listeners>-->
+    <test name="Regression" >
+        <packages>
+            <package name="com.customertimes.test.addToBasket">
+            </package>
+        </packages>
+    </test>
+</suite>
+
