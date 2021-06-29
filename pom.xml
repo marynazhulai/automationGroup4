@@ -62,23 +62,6 @@
           <version>3.8.0</version>
         </plugin>
         <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.1</version>
-          <configuration>
-            <!--suppress UnresolvedMavenProperty -->
-            <argLine>
-              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-            </argLine>
-            <environmentVariables>
-              <maven.project.basedir>${project.basedir}</maven.project.basedir>
-            </environmentVariables>
-            <!-- Suite file injection parameter from command line -->
-            <suiteXmlFiles>
-              <suiteXmlFile>${project.basedir}/src/test/resources/testng.xml</suiteXmlFile>
-            </suiteXmlFiles>
-          </configuration>
-        </plugin>
-        <plugin>
           <groupId>io.qameta.allure</groupId>
           <artifactId>allure-maven</artifactId>
           <version>2.10.0</version>
@@ -102,9 +85,9 @@
           <version>2.22.1</version>
           <configuration>
             <failIfNoTests>true</failIfNoTests>
-            <includes>
-              <include>**/*Test*.*</include>
-            </includes>
+            <suiteXmlFiles>
+              <suiteXmlFile>${project.basedir}/target/test-classes/testng.xml</suiteXmlFile>
+            </suiteXmlFiles>
           </configuration>
         </plugin>
       </plugins>
