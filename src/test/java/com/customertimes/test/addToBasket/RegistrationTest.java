@@ -1,4 +1,4 @@
-package com.customertimes.test.login;
+package com.customertimes.test.addToBasket;
 
 import com.customertimes.model.Customer;
 import com.customertimes.test.BaseTest;

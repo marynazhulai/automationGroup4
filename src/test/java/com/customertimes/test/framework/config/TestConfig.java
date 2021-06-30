@@ -6,17 +6,18 @@ import org.aeonbits.owner.ConfigFactory;
 @Config.Sources("classpath:config.properties")
 
 public interface TestConfig extends Config {
-    TestConfig CONFIG = ConfigFactory.create(TestConfig.class);
-   // TestConfig CONFIG = ConfigFactory.create(TestConfig.class, System.getenv(), System.getProperties());
+    //TestConfig CONFIG = ConfigFactory.create(TestConfig.class);
+    TestConfig CONFIG = ConfigFactory.create(TestConfig.class, System.getenv(), System.getProperties());
     @DefaultValue("chrome")
     String browser();
 
-//new line
-    //String browserVersion();
-//
+    String browserVersion();
 
     boolean remote();
 
     @Key("selenium.server.url")
     String seleniumServerUrl();
+
+    @Key("base.url")
+    String baseUrl();
 }
