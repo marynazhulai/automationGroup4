@@ -6,10 +6,7 @@ import com.customertimes.test.BaseTest;
 import com.customertimes.test.framework.driver.WebdriverRunner;
 import com.customertimes.test.framework.pages.BasketPage;
 import com.customertimes.test.framework.pages.LoginPage;
-import com.customertimes.test.framework.pages.ProductInformationPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.html5.LocalStorage;
-import org.openqa.selenium.html5.SessionStorage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -27,7 +24,7 @@ public class VerifiedAddedProductToBasket extends BaseTest {
 
     @BeforeClass
     public void setup() throws InterruptedException {
-        getWebDriver().get("http://3.134.94.241");
+        getWebDriver().get("http://beeb0b73705f.sn.mynetname.net:3000/");
         getWebDriver().manage().deleteAllCookies();
         //getWebDriver().navigate().refresh();
         wait = new WebDriverWait(getWebDriver(),5);

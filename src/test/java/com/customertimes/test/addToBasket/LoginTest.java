@@ -7,9 +7,6 @@ import com.customertimes.test.framework.listener.TestListener;
 import com.customertimes.test.framework.pages.LoginPage;
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -30,7 +27,7 @@ public class LoginTest extends BaseTest {
 
     @BeforeClass
     public void setup() throws InterruptedException {
-        getWebDriver().get("http://3.134.94.241");
+        getWebDriver().get("http://beeb0b73705f.sn.mynetname.net:3000/");
         wait = new WebDriverWait(getWebDriver(),5);
         wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']"))));
         getWebDriver().findElement(By.cssSelector("button[aria-label='Close Welcome Banner']")).click();
