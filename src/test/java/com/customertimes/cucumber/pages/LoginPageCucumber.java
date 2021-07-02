@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriver;
 
-public class LoginPage extends AbstractPage {
+public class LoginPageCucumber extends AbstractPage {
     private WebDriverWait wait;
     private By navBarAccount = By.id("navbarAccount");
     private By loginButton = By.cssSelector("[type=submit]");
@@ -20,7 +20,7 @@ public class LoginPage extends AbstractPage {
     private By loginSubmitButton = By.id("navbarLoginButton");
     private By goToUserProfileButton = By.cssSelector("button[aria-label='Go to user profile'] span");
 
-    public LoginPage(WebDriver driver) {
+    public LoginPageCucumber(WebDriver driver) {
         super(driver);
         wait = new WebDriverWait(driver, TIME_OUT);
     }

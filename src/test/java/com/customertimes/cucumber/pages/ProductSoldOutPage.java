@@ -33,6 +33,8 @@ public class ProductSoldOutPage extends AbstractPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(closeWelcomeBanner));
         wait.until(ExpectedConditions.elementToBeClickable(getWebDriver().findElement(closeWelcomeBanner)));
         getWebDriver().findElement(closeWelcomeBanner).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(closeCookieMessage));
+        getWebDriver().findElement(closeCookieMessage).click();
     }
     public String getErrorMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(warningMessageOutOfStock));
@@ -40,17 +42,11 @@ public class ProductSoldOutPage extends AbstractPage {
     }
 
     public void clickOnSoldOutProduct() throws InterruptedException {
-        //((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
-        /*JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,250)", "");*/
-
         wait.until(ExpectedConditions.visibilityOfElementLocated(soldOutProduct));
         getWebDriver().findElement(soldOutProduct).click();
-        Thread.sleep(1000);
     }
 
     public void clickNextPage() {
-        getWebDriver().findElement(closeCookieMessage).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(nextPageButton));
         getWebDriver().findElement(nextPageButton).click();
     }

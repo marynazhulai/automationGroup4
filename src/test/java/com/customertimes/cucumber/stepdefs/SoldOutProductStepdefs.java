@@ -1,6 +1,6 @@
 package com.customertimes.cucumber.stepdefs;
 
-import com.customertimes.cucumber.pages.LoginPage;
+import com.customertimes.cucumber.pages.LoginPageCucumber;
 import com.customertimes.cucumber.pages.ProductSoldOutPage;
 import com.customertimes.test.framework.config.TestConfig;
 import io.cucumber.java.After;
@@ -16,7 +16,7 @@ import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriv
 
 public class SoldOutProductStepdefs {
     private ProductSoldOutPage productSoldOutPage = new ProductSoldOutPage(getWebDriver());
-    private LoginPage loginPage = new LoginPage(getWebDriver());
+    private LoginPageCucumber loginPageCucumber = new LoginPageCucumber(getWebDriver());
     public String message = "We are out of stock! Sorry for the inconvenience.";
     @Before
     public void setUp() {
@@ -30,35 +30,32 @@ public class SoldOutProductStepdefs {
 
     @When("User enters email {string} and password {string}")
     public void enterUserEmailAndPassword(String email, String password) {
-        loginPage.enterEmail(email);
-        loginPage.enterPassword(password);
+        loginPageCucumber.enterEmail(email);
+        loginPageCucumber.enterPassword(password);
 
     }
     @When("User clicks on login button" )
     public void userClicksOnLoginButton(){
-        loginPage.clickOnLoginButton();
+        loginPageCucumber.clickOnLoginButton();
     }
 
 
     @When("User finds sold out product" )
-    public void userFindsSoldOutProduct() {
+    public void userFindsSoldOutProduct() throws InterruptedException {
+        Thread.sleep(1000);
         productSoldOutPage.scrollDown();
         productSoldOutPage.clickNextPage();
-
     }
 
     @When("User tries to add to basket sold out product" )
     public void userTriesToAddToBasketSoldOutProduct() throws InterruptedException {
-
         JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
         js.executeScript("window.scrollBy(0,-1000)");
-
-        Thread.sleep(20000);
         productSoldOutPage.clickOnSoldOutProduct();
-            }
+     }
 
     @Then("Error message is displayed" )
-    public void errorMessageIsDisplayed(String message) {
+    public void errorMessageIsDisplayed() {
 
         String errorMessage = productSoldOutPage.getErrorMessage();
         Assert.assertEquals(errorMessage, message, "No error message");
