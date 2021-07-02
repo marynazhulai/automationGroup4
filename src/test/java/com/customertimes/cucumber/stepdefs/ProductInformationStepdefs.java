@@ -16,7 +16,7 @@ import static com.customertimes.test.framework.driver.WebdriverRunner.getWebDriv
 
 public class ProductInformationStepdefs {
     private ProductInformationPageCucumber productInformationPageCucumber = new ProductInformationPageCucumber(getWebDriver());
-    public String expectedTitle = " Apple Juice (1000ml) ";
+    public String expectedTitle = "Apple Juice (1000ml)";
 
     @Before
     public void setUp() {
@@ -36,7 +36,7 @@ public class ProductInformationStepdefs {
     }
 
     @Then("Product information is displayed" )
-    public void productInformationIsDisplayed(String expectedTitle) {
+    public void productInformationIsDisplayed() {
         String actualTitle = productInformationPageCucumber.getActualTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
         System.out.println("3st");
