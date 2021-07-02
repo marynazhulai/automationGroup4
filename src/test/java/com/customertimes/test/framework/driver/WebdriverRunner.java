@@ -37,7 +37,7 @@ public class WebdriverRunner {
                         try {
                             DesiredCapabilities capabilities = new DesiredCapabilities();
                             capabilities.setCapability("browserName", "chrome");
-                            capabilities.setCapability("browserVersion", "86.0");
+                            capabilities.setCapability("browserVersion", "90.0");
                             capabilities.setCapability("enableVNC", true);
                             driver.set(new RemoteWebDriver(new URL(TestConfig.CONFIG.seleniumServerUrl()), capabilities));
                         } catch (MalformedURLException e) {
